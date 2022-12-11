@@ -51,19 +51,20 @@
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
   };
+
   class Product{
     constructor(){
-      const thisProdact = this;
-
-      console.log('new Prodact:', thisProdact);
+      const thisProduct = this;
+      console.log('new Product:', thisProduct);
     }
   }
-
+  
   const app = {
     initMenu: function(){
       const testProduct = new Product();
-      console.log('testProduct', testProduct);
+      console.log('testProduct:', testProduct);
     },
+
     init: function(){
       const thisApp = this;
       console.log('*** App starting ***');
@@ -75,6 +76,7 @@
       thisApp.initMenu();
     },
   };
-  
+
+
   app.init();
 }
