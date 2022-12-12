@@ -56,10 +56,10 @@
     constructor(id, data){
       const thisProduct = this;
 
-        thisProduct.id = id;
-        thisProduct.data = data;
+      thisProduct.id = id;
+      thisProduct.data = data;
 
-        thisProduct.renderInMenu();
+      thisProduct.renderInMenu();
 
       console.log('new Product:', thisProduct);
     }
