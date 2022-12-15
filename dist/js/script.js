@@ -82,8 +82,6 @@
 
       /* add element to menu */
       menuContainer.appendChild(thisProduct.element);
-
-      
     }
 
     getElements(){
@@ -94,6 +92,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
     
 
@@ -136,8 +135,6 @@
         event.preventDefault();
         thisProduct.processOrder();
       });
-
-
       // console.log('initOrderForm');
     }
     
@@ -156,19 +153,28 @@
       for(let paramId in thisProduct.data.params) {
         // determine param value, e.g. paramId = 'toppings', param = { label: 'Toppings', type: 'checkboxes'... }
         const param = thisProduct.data.params[paramId];
-        console.log('++++++++++++');
-        console.log(paramId, param);
+        // console.log('++++++++++++');
+        // console.log(paramId, param);
     
         // for every option in this category
         for(let optionId in param.options) {
           // determine option value, e.g. optionId = 'olives', option = { label: 'Olives', price: 2, default: true }
           const option = param.options[optionId];
-          console.log('PRICE', param.options[optionId].price);
-          console.log(optionId, option);
-          if(formData[paramId] && formData[paramId].includes(optionId)){
+          const optionImage = thisProduct.imageWrapper.querySelector('.' + paramId + '-' + optionId);
+          const optionSelected = formData[paramId];
+          // console.log('PRICE', param.options[optionId].price);
+          // console.log(optionId, option);
+          if(optionSelected && optionSelected.includes(optionId)){
             price += param.options[optionId].price;
           }
           
+          if(optionImage) {
+            if(optionSelected.includes(optionId)) {
+              optionImage.classList.add(classNames.menuProduct.wrapperActive);
+            } else {
+              optionImage.classList.remove(classNames.menuProduct.wrapperActive);
+            }
+          }
         }
       }
     
