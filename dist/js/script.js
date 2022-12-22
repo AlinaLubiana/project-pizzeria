@@ -123,7 +123,6 @@
       thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
     
-
     initAccordion(){
       const thisProduct = this;
 
@@ -146,7 +145,6 @@
       });
     }
 
-
     initOrderForm(){
       const thisProduct = this;
       thisProduct.form.addEventListener('submit', function(event){
@@ -163,11 +161,11 @@
       thisProduct.cartButton.addEventListener('click', function(event){
         event.preventDefault();
         thisProduct.processOrder();
+        thisProduct.addToCart();
       });
       // console.log('initOrderForm');
     }
     
-
     processOrder() {
       const thisProduct = this;
     
@@ -206,9 +204,10 @@
           }
         }
       }
-      
+      thisProduct.priceSingle = price;
       price *= thisProduct.amountWidget.value;
       // update calculated price in the HTML
+      
       thisProduct.priceElem.innerHTML = price;
     }
 
@@ -222,6 +221,29 @@
         thisProduct.processOrder();
       });  
     }
+
+    addToCart(){
+      const thisProduct = this;
+      console.log('thisProduct.prepareCartProduct',thisProduct.prepareCartProduct());
+      app.cart.add(thisProduct.prepareCartProduct());
+    }
+
+    prepareCartProduct(){
+      const thisProduct = this;
+
+      const productSummary = {
+         id : thisProduct.id,
+         name: thisProduct.data.name,
+         amount: thisProduct.amountWidget.value,
+         priceSigle: thisProduct.priceSingle,
+         price: thisProduct.amountWidget.value * thisProduct.priceSingle
+
+
+      };
+      console.log('thisProduct', thisProduct);
+      return productSummary;
+    }
+
   }
   
   class AmountWidget{
@@ -290,7 +312,7 @@
       thisCart.getElements(element);
       thisCart.initActions(element);
 
-      console.log('new Cart', thisCart)
+      // console.log('new Cart', thisCart)
     }
 
     getElements(element){
@@ -306,10 +328,15 @@
     initActions(element){
       const thisCart = this;
       thisCart.dom.toggleTrigger.addEventListener('click', function(element){
-        console.log('thisCart.dom.wrapper',thisCart.dom.wrapper);
+        // console.log('thisCart.dom.wrapper',thisCart.dom.wrapper);
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
+    }
 
+    add(menuProduct){
+      // const thisCart = this;
+
+      // console.log('adding product', menuProduct);
     }
 
   }
