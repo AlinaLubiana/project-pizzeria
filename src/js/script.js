@@ -142,6 +142,7 @@
         }
         /* toggle active class on thisProduct.element */
         thisProduct.element.classList.toggle(classNames.menuProduct.wrapperActive);
+        console.log('thisProduct.element',thisProduct.element);
       });
     }
 
@@ -263,7 +264,6 @@
       
       thisWidget.input.addEventListener('change', function(event){
         thisWidget.setValue(thisWidget.input.value);
-        
       });
       thisWidget.linkDecrease.addEventListener('click', function(event){
         thisWidget.setValue(thisWidget.value - 1);
@@ -288,6 +288,7 @@
       thisCart.products = [];
 
       thisCart.getElements(element);
+      thisCart.initActions(element);
 
       console.log('new Cart', thisCart)
     }
@@ -299,8 +300,17 @@
       
       thisCart.dom.wrapper = element;
 
+      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
     }
 
+    initActions(element){
+      const thisCart = this;
+      thisCart.dom.toggleTrigger.addEventListener('click', function(element){
+        console.log('thisCart.dom.wrapper',thisCart.dom.wrapper);
+        thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
+      });
+
+    }
 
   }
 
@@ -340,8 +350,6 @@
 
       const cartElem = document.querySelector(select.containerOf.cart);
       thisApp.cart = new Cart(cartElem);
-
-      
     },
   };
 
