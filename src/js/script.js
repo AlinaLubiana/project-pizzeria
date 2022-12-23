@@ -224,24 +224,54 @@
 
     addToCart(){
       const thisProduct = this;
-      console.log('thisProduct.prepareCartProduct',thisProduct.prepareCartProduct());
+      // console.log('thisProduct.prepareCartProduct',thisProduct.prepareCartProduct());
       app.cart.add(thisProduct.prepareCartProduct());
+      // console.log('!!!prepareCartProductParams',thisProduct.prepareCartProductParams());
+      // thisProduct.prepareCartProductParams();
     }
 
     prepareCartProduct(){
       const thisProduct = this;
 
       const productSummary = {
-         id : thisProduct.id,
-         name: thisProduct.data.name,
-         amount: thisProduct.amountWidget.value,
-         priceSigle: thisProduct.priceSingle,
-         price: thisProduct.amountWidget.value * thisProduct.priceSingle
-
-
+        id : thisProduct.id,
+        name: thisProduct.data.name,
+        amount: thisProduct.amountWidget.value,
+        priceSigle: thisProduct.priceSingle,
+        price: thisProduct.amountWidget.value * thisProduct.priceSingle
       };
-      console.log('thisProduct', thisProduct);
+      // console.log('thisProduct', thisProduct);
+      productSummary.params = thisProduct.prepareCartProductParams();
       return productSummary;
+    }
+
+    prepareCartProductParams(){
+      const thisProduct = this;
+
+      const formData = utils.serializeFormToObject(thisProduct.form);
+      const params = {}; 
+
+      for(let paramId in thisProduct.data.params) {
+        const param = thisProduct.data.params[paramId];
+        
+        params[paramId] = {
+          label: param.label,
+          option: {}
+        };
+
+        for(let optionId in param.options) {
+          const option = param.options[optionId];
+          
+          const optionSelected = formData[paramId] && formData[paramId].includes(optionId);
+          
+          if(optionSelected) {
+            params[paramId].option[optionId] = option.label;
+
+          }
+        }
+      }
+      // console.log('PP', params);
+      return params;
     }
 
   }
@@ -336,7 +366,7 @@
     add(menuProduct){
       // const thisCart = this;
 
-      // console.log('adding product', menuProduct);
+      console.log('adding product', menuProduct);
     }
 
   }
