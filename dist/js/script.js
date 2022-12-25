@@ -130,7 +130,7 @@
       /* find the clickable trigger (the element that should react to clicking) */
       // const clickableTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       
-      /* START: add event listener to clickable trigger on event click */
+      /* START: add event limerry cristmas you toostener to clickable trigger on event click */
       thisProduct.accordionTrigger.addEventListener('click', function(event) {
       /* prevent default action for event */
         event.preventDefault();
@@ -369,13 +369,45 @@
       const cartContainer = document.querySelector(select.cart.productList);
       const generatedHTML = templates.cartProduct(menuProduct);
       // console.log('generatedHTML', generatedHTML);
-      thisCart.element = utils.createDOMFromHTML(generatedHTML);
+      const generatedDOM = utils.createDOMFromHTML(generatedHTML);
       // console.log('thisCart.element',thisCart.element);
-      cartContainer.appendChild(thisCart.element);
-      console.log('adding product', menuProduct);
+      cartContainer.appendChild(generatedDOM);
+      // console.log('adding product', menuProduct);
+
+      thisCart.products.push(new CartProduct(menuProduct, generatedDOM));
+      // console.log('thisCart.products', thisCart.products);
     }
 
   }
+
+  class CartProduct{
+    constructor(menuProduct, element){
+      const thisCartProduct = this;
+      thisCartProduct.amount = menuProduct.amount;
+      thisCartProduct.id = menuProduct.id;
+      thisCartProduct.name = menuProduct.name;
+      thisCartProduct.params = menuProduct.params;
+      thisCartProduct.price = menuProduct.price;
+      thisCartProduct.priceSigle = menuProduct.priceSigle;
+      thisCartProduct.getElements(element);
+      // console.log('thisCartProduct', thisCartProduct);
+
+    }
+
+    getElements(element){
+      const thisCartProduct = this;
+
+      thisCartProduct.dom = {};
+      thisCartProduct.dom.wrapper = element;
+      thisCartProduct.dom.amountWidget = element.querySelector(select.cartProduct.amountWidget);
+      thisCartProduct.dom.price = element.querySelector(select.cartProduct.price);
+      thisCartProduct.dom.edit = element.querySelector(select.cartProduct.edit);
+      thisCartProduct.dom.remove  = element.querySelector(select.cartProduct.remove);
+      console.log('element', element);
+      console.log('thisCartProduct', thisCartProduct);
+    }
+
+  } 
 
 
   const app = {
