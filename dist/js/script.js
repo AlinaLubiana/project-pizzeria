@@ -383,6 +383,7 @@
   class CartProduct{
     constructor(menuProduct, element){
       const thisCartProduct = this;
+
       thisCartProduct.amount = menuProduct.amount;
       thisCartProduct.id = menuProduct.id;
       thisCartProduct.name = menuProduct.name;
@@ -390,6 +391,7 @@
       thisCartProduct.price = menuProduct.price;
       thisCartProduct.priceSigle = menuProduct.priceSigle;
       thisCartProduct.getElements(element);
+      thisCartProduct.initAmountWidget();
       // console.log('thisCartProduct', thisCartProduct);
 
     }
@@ -398,13 +400,28 @@
       const thisCartProduct = this;
 
       thisCartProduct.dom = {};
+
       thisCartProduct.dom.wrapper = element;
+
       thisCartProduct.dom.amountWidget = element.querySelector(select.cartProduct.amountWidget);
       thisCartProduct.dom.price = element.querySelector(select.cartProduct.price);
       thisCartProduct.dom.edit = element.querySelector(select.cartProduct.edit);
       thisCartProduct.dom.remove  = element.querySelector(select.cartProduct.remove);
-      console.log('element', element);
-      console.log('thisCartProduct', thisCartProduct);
+      // console.log('element', element);
+      // console.log('thisCartProduct', thisCartProduct);
+    }
+
+    initAmountWidget(){
+      const thisCartProduct = this;
+  
+      thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
+    
+      thisCartProduct.dom.amountWidget.addEventListener('updated', function(event){
+      thisCartProduct.price = thisCartProduct.amountWidget.value * thisCartProduct.priceSigle;
+      thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
+      // console.log('thisCartProduct.price', thisCartProduct.price);
+      }); 
+      
     }
 
   } 
