@@ -365,6 +365,10 @@
       thisCart.dom.totalPrice = thisCart.dom.wrapper.querySelector(select.cart.totalPrice);
       thisCart.dom.totalNumber = thisCart.dom.wrapper.querySelector(select.cart.totalNumber);
       thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
+      thisCart.dom.form = thisCart.dom.wrapper.querySelector(select.cart.form);
+      thisCart.dom.address = thisCart.dom.wrapper.querySelector(select.cart.address);
+      thisCart.dom.phone = thisCart.dom.wrapper.querySelector(select.cart.phone);
+      
       // console.log('thisCart.dom.totalPrice',thisCart.dom.totalPrice);
     }
 
@@ -380,7 +384,53 @@
       thisCart.dom.productList.addEventListener('remove', function(event){
         thisCart.remove(event.detail.cartProduct);
       });
+      thisCart.dom.form.addEventListener('submit', function(callback){
+        callback.preventDefault();
+        thisCart.sendOrder();
+      });
     }
+
+    sendOrder(){
+      const thisCart = this;
+
+      const url = settings.db.url + '/' + settings.db.orders;
+      
+      const payload = {
+        address : thisCart.dom.address.value,
+        phone: thisCart.dom.phone.value,
+        totalPrice: thisCart.totalPrice,
+        subtotalPrice: thisCart.subtotalPrice,
+        totalNumber: thisCart.totalNumber,
+        deliveryFee: thisCart.deliveryFee,
+        products: []
+      };
+      // console.log('payload', payload);
+
+      for(let prod of thisCart.products) {
+        // console.log('prod', prod.getData());
+        payload.products.push(prod.getData());
+      }
+      // console.log('payload1111', payload);
+
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      };
+
+      fetch(url, options)
+        .then(function(rawResponse){
+        return rawResponse.json();
+        })
+        .then(function(parsedResponse){
+        console.log('parsedResponse', parsedResponse);
+        });
+    
+      // fetch(url, options);
+    }
+
 
     add(menuProduct){
       const thisCart = this;
@@ -401,24 +451,24 @@
     update(){
       const thisCart = this;
 
-      let deliveryFee = settings.cart.defaultDeliveryFee;
-      let totalNumber = 0;
-      let subtotalPrice = 0;
+      thisCart.deliveryFee = settings.cart.defaultDeliveryFee;
+      thisCart.totalNumber = 0;
+      thisCart.subtotalPrice = 0;
       // console.log('thisCart.products', thisCart.products);
       for(let product in thisCart.products){
         // console.log('product', thisCart.products[product].price);
-        totalNumber += 1;
-        subtotalPrice += thisCart.products[product].price;
+        thisCart.totalNumber += 1;
+        thisCart.subtotalPrice += thisCart.products[product].price;
       }
-      if (subtotalPrice == 0){
-        deliveryFee = 0;
+      if (thisCart.subtotalPrice == 0){
+        thisCart.deliveryFee = 0;
       }
-      thisCart.totalPrice = subtotalPrice + deliveryFee;
+      thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
       
-      thisCart.dom.deliveryFee.innerHTML = deliveryFee;
-      thisCart.dom.subtotalPrice.innerHTML = subtotalPrice;
+      thisCart.dom.deliveryFee.innerHTML = thisCart.deliveryFee;
+      thisCart.dom.subtotalPrice.innerHTML = thisCart.subtotalPrice;
       thisCart.dom.totalPrice.innerHTML = thisCart.totalPrice;
-      thisCart.dom.totalNumber.innerHTML = totalNumber;
+      thisCart.dom.totalNumber.innerHTML = thisCart.totalNumber;
     
       // console.log('totalNumber', totalNumber);
       // console.log('subtotalPrice', subtotalPrice);
@@ -506,6 +556,19 @@
         thisCartProduct.remove();
       });
       
+    }
+
+    getData(){
+      const thisCartProduct = this;
+
+      const readyCartProduct = {
+        id : thisCartProduct.id,
+        name: thisCartProduct.name,
+        amount: thisCartProduct.amount,
+        priceSigle: thisCartProduct.priceSigle,
+        price: thisCartProduct.price
+      };
+      return readyCartProduct;
     }
 
   } 
