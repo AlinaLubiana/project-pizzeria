@@ -4,6 +4,7 @@ import {select, classNames, settings} from './settings.js';
 // import AmountWidget from './components/AmountWidget.js';
 import Cart from './components/Cart.js';
 import Product from './components/Product.js';
+import Booking from './components/Booking.js';
 
 
 const app = {
@@ -91,6 +92,8 @@ const app = {
     thisApp.initData();
     // thisApp.initMenu();
     thisApp.initCart();
+
+    thisApp.initBooking();
   },
 
   initData: function(){
@@ -126,7 +129,13 @@ const app = {
     thisApp.productList.addEventListener('add-to-cart', function(event){
       app.cart.add(event.detail.product);
     });
-    console.log('123252321', cartElem);
+  },
+
+  initBooking: function(){
+    const thisApp = this;
+
+    const bookingElem = document.querySelector(select.containerOf.booking);
+    thisApp.Booking = new Booking(bookingElem);
   },
 };
 
