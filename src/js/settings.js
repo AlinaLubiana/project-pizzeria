@@ -89,7 +89,7 @@ export const classNames = {
 
 export const settings = {
   amountWidget: {
-    defaultValue: 1,
+    defaultValue: 0,
     defaultMin: 1,
     defaultMax: 9,
   },
