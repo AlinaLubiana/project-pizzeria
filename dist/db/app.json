@@ -204,19 +204,19 @@
   ],
   "orders": [
     {
-      "address": "ee",
-      "phone": "dd",
-      "totalPrice": 53,
-      "subtotalPrice": 33,
+      "address": "ыыы",
+      "phone": "ввв",
+      "totalPrice": 47,
+      "subtotalPrice": 27,
       "totalNumber": 1,
       "deliveryFee": 20,
       "products": [
         {
-          "id": "pizza",
-          "name": "Nonna Alba's Pizza",
-          "amount": 1,
-          "priceSigle": 33,
-          "price": 33
+          "id": "cake",
+          "name": "Zio Stefano's Doughnut",
+          "amount": 3,
+          "priceSigle": 9,
+          "price": 27
         }
       ],
       "id": 1
