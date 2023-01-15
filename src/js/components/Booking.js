@@ -8,6 +8,8 @@ class Booking{
   constructor(element){
     const thisBooking = this;
 
+    thisBooking.selectedTable = {};
+
     thisBooking.renderBooking(element);
     thisBooking.initWidgets();
     thisBooking.getData();
@@ -135,6 +137,8 @@ class Booking{
 
     for(let table of thisBooking.dom.tables){ 
       let tableID = table.getAttribute(settings.booking.tableIdAttribute);
+      thisBooking.selectedTable = {};
+      table.classList.remove('selected');
       if(!isNaN(tableID)){
         tableID = parseInt(tableID);
       }
@@ -167,6 +171,7 @@ class Booking{
     thisBooking.dom.hourPicker = element.querySelector(select.widgets.hourPicker.wrapper);
 
     thisBooking.dom.tables = thisBooking.dom.wrapper.querySelectorAll(select.booking.tables);
+    thisBooking.dom.tablesPlan = element.querySelector('.floor-plan');
   }
 
   initWidgets(){
@@ -182,6 +187,32 @@ class Booking{
 
     thisBooking.dom.wrapper.addEventListener('updated', function(){
       thisBooking.updateDom();
+    });
+    thisBooking.dom.tablesPlan.addEventListener('click', function(event) {
+      let table = event.target;
+      event.preventDefault();
+      if (table && table.matches('.table') && !table.classList.contains(classNames.booking.tableBooked)) {
+        let selectedTable = table.getAttribute(settings.booking.tableIdAttribute);
+        if (thisBooking.selectedTable.table != selectedTable){
+          thisBooking.selectedTable.table = selectedTable;
+        } else {
+          thisBooking.selectedTable.table = 0;
+        }
+        for(let table of thisBooking.dom.tables){
+          let tableID = table.getAttribute(settings.booking.tableIdAttribute);
+          if(!isNaN(tableID)){
+            tableID = parseInt(tableID);
+          }
+          if(tableID == thisBooking.selectedTable.table && !table.classList.contains(classNames.booking.tableBooked)){
+            table.classList.add(classNames.booking.tableSelected);
+          }
+          else{
+            table.classList.remove(classNames.booking.tableSelected);
+          }
+          
+        }
+        console.log(thisBooking.selectedTable.table);
+      }
     });
   }
 }
