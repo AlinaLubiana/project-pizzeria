@@ -3,12 +3,15 @@ export const select = {
     menuProduct: '#template-menu-product',
     cartProduct: '#template-cart-product',
     bookingWidget: '#template-booking-widget',
+    // homeSlider: '#template-home-slider',
+    // homeGallery: '#template-home-gallery',
   },
   containerOf: {
     menu: '#product-list',
     cart: '#cart',
     pages: '#pages',
     booking: '.booking-wrapper',
+    // homeSlider: '.home-slider-wrapper',
   },
   all: {
     menuProducts: '#product-list > .product',

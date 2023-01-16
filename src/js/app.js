@@ -5,14 +5,15 @@ import {select, classNames, settings} from './settings.js';
 import Cart from './components/Cart.js';
 import Product from './components/Product.js';
 import Booking from './components/Booking.js';
+// import Home from './components/home.js';
 
 const app = {
   initPages: function(){
     const thisApp = this;
-
+    
     thisApp.pages = document.querySelector(select.containerOf.pages).children;
     thisApp.navLinks = document.querySelectorAll(select.nav.links);
-
+    console.log('pages',window.location);
     const idFromHash = window.location.hash.replace('#/', '');
     // console.log('idFromHash', idFromHash);
 
@@ -25,7 +26,9 @@ const app = {
       }
     }
 
-    thisApp.activatePage(idFromHash);
+    // thisApp.activatePage(idFromHash);
+    //SET home default page
+    thisApp.activatePage('home');
 
     for(let link of thisApp.navLinks){
       link.addEventListener('click', function(event){
@@ -91,6 +94,7 @@ const app = {
     thisApp.initCart();
 
     thisApp.initBooking();
+    // thisApp.initHome();
   },
 
   initData: function(){
@@ -134,6 +138,11 @@ const app = {
     const bookingElem = document.querySelector(select.containerOf.booking);
     thisApp.Booking = new Booking(bookingElem);
   },
+
+  // initHome: function(){
+  //   const thisApp = this;
+  //   thisApp.Home = new Home();
+  // },
 };
 
 

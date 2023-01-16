@@ -9,6 +9,7 @@
   <link href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <link rel="stylesheet" href="vendor/range-slider.min.css">
+  <link rel="stylesheet" href="vendor/flickity.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="style_home_css/style_home.css">
 
@@ -29,7 +30,7 @@
           <h1 class="logo__title"><span>Mamma</span>Mia!</h1>
           <h2 class="logo__subtitle">the best homemade Italian food</h2>
         </div>
-        <div class="main-nav">
+        <div class="main-nav main-nav-top">
           <a href="#home">Home</a>
           <a href="#order">Order</a>
           <a href="#booking">Booking</a>
@@ -82,7 +83,7 @@
               <div class="card mb-3 d-flex justify-content-center align-items-center">
                 <img class="image-boxes" src="images/pizzeria-home/assets/pizza-1.jpg" alt="ORDER ONLINE">
                   <div class="card-body position-absolute">
-                    <h3 class="text-white text-animation">ORDER ONLINE</h3>
+                    <h3 class="text-white text-animation main-nav"><a class="text-white text-animation" href="#order">ORDER ONLINE</a></h3>
                   </div>
               </div>
             </div>
@@ -90,7 +91,7 @@
               <div class="card mb-3 d-flex justify-content-center align-items-center">
                 <img class="image-boxes" src="images/pizzeria-home/assets/pizza-2.jpg" alt="BOOK A TABLE">
                 <div class="card-body position-absolute">
-                  <h3 class="text-white text-animation">BOOK A TABLE</h3>
+                  <h3 class="text-white text-animation main-nav"><a class="text-white text-animation" href="#booking">BOOK A TABLE</a></h3>
                 </div>
               </div>
             </div>
@@ -108,6 +109,9 @@
 
         <!--slider -->
         <div class="slider">slider</div>
+        <!-- <div class="home-slider-wrapper container"></div> -->
+        <!-- <div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true }'></div> -->
+
         <!--galery -->
         <div class="gallery">
           <div class="container py-5 boxes">
@@ -258,6 +262,17 @@
     </article> <!-- .product -->
   </script>
 
+  <!-- <script id="template-home-slider" type="text/x-handlebars-template">
+    <div class="carousel js-flickity"> -->
+      <!-- images from unsplash.com -->
+      <!-- <div class="carousel-cell">
+        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" alt="orange tree" />
+      </div>
+  </script>
+
+  <script id="template-home-gallery" type="text/x-handlebars-template">
+  </script> -->
+
   <script id="template-booking-widget" type="text/x-handlebars-template">
     <div class="booking-widget">
       <h2 class="page__title no-spacing">Book a table</h2>
@@ -329,6 +344,7 @@
   <!-- <script src="js/data.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="vendor/range-slider.min.js"></script>
+  <script src="vendor/flickity.pkgd.min.js"></script>
   <script src="js/app.js" type="module"></script>
 </body>
 </html>

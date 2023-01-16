@@ -60,7 +60,7 @@
   text-transform: uppercase;
 }
 
-.h2, .floor-plan .table, .booking-option-title, .product__params-title, .main-nav a {
+.h2, .floor-plan .table, .booking-option-title, .product__params-title, .main-nav-top a {
   font-size: 14px;
   font-weight: 700;
   text-transform: uppercase;
@@ -286,7 +286,7 @@ input.error, select.error {
   font-style: italic;
 }
 
-.main-nav {
+.main-nav-top {
   position: absolute;
   display: flex;
   flex-direction: row;
@@ -294,7 +294,7 @@ input.error, select.error {
   justify-content: flex-start;
   bottom: -96px;
 }
-.main-nav a {
+.main-nav-top a {
   color: #ff6b6b;
   text-decoration: none;
   margin-right: 24px;
@@ -304,7 +304,7 @@ input.error, select.error {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
-.main-nav a.active {
+.main-nav-top a.active {
   background: #f2f2f2;
 }
 
