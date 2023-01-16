@@ -1,0 +1,25 @@
+
+
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover; 
+}
+
+.box-bottom-bg {
+  width: 100%;
+  height: 140px;
+  object-fit: cover; 
+  background: #ff6b6b;
+}
+
+.text-animation {
+  transition: 1s;
+  text-align: center; 
+}
+.text-animation:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+
