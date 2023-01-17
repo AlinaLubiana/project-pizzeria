@@ -23,6 +23,39 @@
   text-decoration: none;
 }
 
+/* Carousel */
+.slider-box {
+  min-height: 300px;
+  padding-bottom: 96px;
+  display: flex;
+  padding-left: 10px;
+  position: relative;
+
+}
+
+.slider-box-img {
+  position: relative;
+}
+
+.slider-box-img img{
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+}
+
+.slider-box-text {
+  margin-left: 30px;
+  margin-top: 10%;
+  text-align: justify;
+  display: inline-table;
+}
+
+.slider-box-title {
+  text-transform: uppercase;
+}
+
+
+
 /* galery */
 .gallery {
   position: relative;
@@ -56,5 +89,7 @@
   color: red;
   transform: scale(1.2);
   cursor: pointer;
-  
 }
+
+
+
