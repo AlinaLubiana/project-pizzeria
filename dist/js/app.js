@@ -95,6 +95,12 @@ const app = {
 
     thisApp.initBooking();
     // thisApp.initHome();
+    let flkty = new Flickity('.courses',{
+      wrapAround: true,
+      prevNextButtons: false,
+      autoPlay: 1500
+      // pageDots: false
+    });
   },
 
   initData: function(){
