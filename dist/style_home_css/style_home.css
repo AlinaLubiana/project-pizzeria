@@ -17,6 +17,7 @@
   transition: 1s;
   text-align: center; 
 }
+
 .text-animation:hover {
   transform: scale(1.2);
   cursor: pointer;
@@ -24,48 +25,82 @@
 }
 
 /* Carousel */
-.slider-box {
-  min-height: 300px;
-  padding-bottom: 96px;
-  display: flex;
-  padding-left: 10px;
+.course-thumbnail img {
+  max-width: 100%;
+  height: auto;
+}
+
+.site-content {
+  text-align: left;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1px;
+  padding-right: 5%; 
+  padding-left: 5%;
+  margin-bottom: 10px;
+}
+
+.card-slider {
+  width: 100%;
+  background-color: rgb(253, 253, 253);
+  text-align: left;
   position: relative;
-
+  height: 100%;
+  box-shadow: 0px 2px 6px 0px rgba(204,209,217,.5);
+  border: 1px solid #E6E9ED;
 }
 
-.slider-box-img {
-  position: relative;
+.courses {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.course-item {
+  width: 33%;
+  padding-right: 2%;
+  padding-left: 2%;
+  margin-bottom: 10px;
+  /* ensuring proper layout*/
+  float: left;
 }
 
-.slider-box-img img{
-  width: 350px;
-  height: 350px;
-  object-fit: cover;
+.course-info {
+  padding: 7%;
+  min-height: 140px;
 }
 
-.slider-box-text {
-  margin-left: 30px;
-  margin-top: 10%;
-  text-align: justify;
-  display: inline-table;
+.course-topic {
+  font-weight: 700;
+  color: #ff6b6b;
+  font-size: 12px;
+  margin-bottom: 5px;
 }
 
-.slider-box-title {
+.course-title {
+  font-family: 'Lato', sans-serif;
+  font-size: 20px;
   text-transform: uppercase;
 }
 
-
+.course-topic-text {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  text-align: justify;
+  display: inline-table;
+}
 
 /* galery */
 .gallery {
   position: relative;
   padding: 5px 5px 5px 15px;
 }
+
 .container-gallery {
   cursor: pointer;
   webkit-transform:scale(0.8); /*Webkit: уменьшаем размер до 0.8*/
   webkit-transition-duration: 0.5s; /*Webkit: длительность анимации*/
 }
+
 .container-gallery:hover{
   webkit-box-shadow:0px 0px 30px gray; /*Webkit: тени*/
   opacity: 0.7;
@@ -85,141 +120,9 @@
   font-size: 25px;
   padding: 10px;
 }
+
 .icon-gallery-i:hover {
   color: red;
   transform: scale(1.2);
   cursor: pointer;
 }
-
-html {
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
-.cf:before,
-.cf:after {
-  display: table;
-  content: ' ';
-}
-.cf:after {
-  clear: both;
-}
-.cf {
-  *zoom: 1;
-}
-body {
-  font-family: 'Roboto', Arial, sans-serif;
-  margin: 0;
-  color: #555555;
-  background-color: #f5f7fa;
-  text-align: center;
-}
-img {
-  max-width: 100%;
-  height: auto;
-}
-figure {
-  margin: 0;
-  padding: 10px;
-}
-figure a {
-  display: block;
-}
-mark {
-  padding: 0 5px;
-  background-color: #dddddd;
-}
-::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.site-content {
-  text-align: left;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 30px;
-  padding-right: 5%; 
-  padding-left: 5%;
-  margin-bottom: 90px;
-}
-
-.card {
-  width: 100%;
-  background-color: #fff;
-  text-align: left;
-  position: relative;
-  height: 100%;
-  box-shadow: 0px 2px 6px 0px rgba(204,209,217,.5);
-  border: 1px solid #E6E9ED;
-}
-
-.courses {
-  margin-top: 30px;
-  margin-bottom: 60px;
-}
-.course-item {
-  width: 33%;
-  padding-right: 2%;
-  padding-left: 2%;
-  margin-bottom: 30px;
-
-  /* ensuring proper layout*/
-  float: left;
-}
-
-.course-info {
-  padding: 7%;
-  min-height: 140px;
-}
-.course-topic {
-  font-weight: 500;
-  color: #AAB2BD;
-  font-size: 12px;
-  margin-bottom: 5px;
-}
-.course-topic.photo {
-  color: #673AB7;
-}
-.course-topic.webdesign {
-  color: #009688;
-}
-.course-topic.computer {
-  color: #2196F3;
-}
-.course-topic.code {
-  color: #4CAF50;
-}
-.course-topic.design {
-  color: #F44336;
-}
-.course-title {
-  font-weight: 500;
-  font-size: 14px;
-  margin: 0 0 30%;
-}
-.course-meta {
-  color: #AAB2BD;
-  font-weight: 300;
-  font-size: 11px;
-  position: absolute;
-  left: 7%;
-  bottom: 7%;
-}
-.course-duration:before {
-  display: inline-block;
-  content: "•";
-  padding-right: 5px;
-  padding-left: 5px;
-}
-.course-caption {
-  position: absolute;
-  right: 5%;
-  bottom: 5%;
-  font-size: 18px;
-  color: #AAB2BD;
-}
-

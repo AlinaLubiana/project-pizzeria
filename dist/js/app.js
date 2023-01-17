@@ -1,11 +1,8 @@
 import {select, classNames, settings} from './settings.js';
-// import utils from './utils.js';
-// import CartProduct from './components/CartProduct.js';
-// import AmountWidget from './components/AmountWidget.js';
 import Cart from './components/Cart.js';
 import Product from './components/Product.js';
 import Booking from './components/Booking.js';
-// import Home from './components/home.js';
+
 
 const app = {
   initPages: function(){
@@ -94,7 +91,7 @@ const app = {
     thisApp.initCart();
 
     thisApp.initBooking();
-    // thisApp.initHome();
+    // eslint-disable-next-line no-undef
     let flkty = new Flickity('.courses',{
       wrapAround: true,
       prevNextButtons: false,
@@ -144,13 +141,7 @@ const app = {
     const bookingElem = document.querySelector(select.containerOf.booking);
     thisApp.Booking = new Booking(bookingElem);
   },
-
-  // initHome: function(){
-  //   const thisApp = this;
-  //   thisApp.Home = new Home();
-  // },
 };
-
 
 app.init();
 
